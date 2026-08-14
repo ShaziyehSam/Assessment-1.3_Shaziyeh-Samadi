@@ -53,10 +53,15 @@ nav {
 
 nav ul {
   display: flex;
+  width: 100%;
   justify-content: space-around;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+nav li {
+  text-align: center;
 }
 
 nav a {
@@ -66,8 +71,16 @@ nav a {
   padding: 5px 10px;
 }
 
+article a {
+  color: var(--c-magenta);
+}
+
+article a:hover {
+  color: var(--c-orange);
+}
+
 nav a:hover {
-  color: var(--emphasised-font);
+ color: var(--c-orange);
   background-color: var(--c-background-color);
 }
 
