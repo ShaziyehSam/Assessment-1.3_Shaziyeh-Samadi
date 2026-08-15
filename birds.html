@@ -7,26 +7,26 @@
 
   <style>
   :root {
-    --background: #f4f1de;
-    --surface: #ffffff;
-    --heading: #3d405b;
-    --text: #2f2f2f;
-    --accent: #e07a5f;
-  }
+  --primary-color: #e07a5f;
+  --secondary-color: #ffffff;
+  --bg-color: #f4f1de;
+  --font-color: #2f2f2f;
+  --heading-color: #3d405b;
+}
 
-  body.dark-theme {
-    --background: #1b263b;
-    --surface: #415a77;
-    --heading: #f4d35e;
-    --text: #ffffff;
-    --accent: #ee6c4d;
-  }
+[data-theme="dark"] {
+  --primary-color: #ee6c4d;
+  --secondary-color: #415a77;
+  --bg-color: #1b263b;
+  --font-color: #ffffff;
+  --heading-color: #f4d35e;
+}
 
   body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--background);
-  color: var(--text);
+  background-color: var(--bg-color);
+  color: var(--font-color);
   font-family: Arial, sans-serif;
   text-align: center;
 }
@@ -39,12 +39,12 @@ main {
 }
 
 h1 {
-  color: var(--heading);
+  color: var(--heading-color);
   font-size: 3rem;
 }
 
 .bird-display {
-  background-color: var(--surface);
+  background-color: var(--secondary-color);
   padding: 25px;
   border-radius: 12px;
 }
@@ -72,8 +72,8 @@ h1 {
 
 button {
   padding: 10px 18px;
-  background-color: var(--accent);
-  color: var(--text);
+  background-color: var(--primary-color);
+  color: var(--font-color);
   border: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -91,22 +91,22 @@ button:hover {
     <h1>Australian Birds</h1>
 
     <section class="bird-display">
-  <img id="bird-image" src="images/kookaburra.jpg" alt="Kookaburra">
+  <img id="bird-image" src="http://www.outgrabe.net/bird00.jpg" alt="Pardalote">
 
   <p id="bird-description">
-    The laughing kookaburra is famous for its loud call, which sounds like laughter.
+    Pardalote by fir0002 (CC-by-NC)
   </p>
 </section>
 
 <section class="bird-buttons">
-  <button id="kookaburra-button">Kookaburra</button>
-  <button id="magpie-button">Magpie</button>
-  <button id="cockatoo-button">Cockatoo</button>
-  <button id="lorikeet-button">Rainbow Lorikeet</button>
-  <button id="emu-button">Emu</button>
+ <button id="pardalote-button">Pardalote</button>
+ <button id="swamp-hen-button">Purple Swamp Hen</button>
+ <button id="stilt-button">White-headed Stilt</button>
+ <button id="thornbill-button">Inland Thornbill</button>
+ <button id="robin-button">Rose Robin</button>
 </section>
 
-<button id="theme-toggle">Switch Theme</button>
+<button id="theme-toggle">Toggle Theme</button>
   </main>
 
   <script>
@@ -121,49 +121,53 @@ button:hover {
     birdDescription.textContent = description;
   }
 // Changes the bird when a bird button is clicked
-  document.getElementById("kookaburra-button").addEventListener("click", function () {
+  document.getElementById("pardalote-button").addEventListener("click", function () {
   showBird(
-    "images/kookaburra.jpg",
-    "Kookaburra",
-    "The laughing kookaburra is famous for its loud call, which sounds like laughter."
+    "http://www.outgrabe.net/bird00.jpg",
+    "Pardalote",
+    "Pardalote by fir0002 (CC-by-NC)"
   );
 });
 
-document.getElementById("magpie-button").addEventListener("click", function () {
+document.getElementById("swamp-hen-button").addEventListener("click", function () {
   showBird(
-    "images/magpie.jpg",
-    "Magpie",
-    "The Australian magpie is known for its beautiful song and intelligent behaviour."
+    "http://www.outgrabe.net/bird01.jpg",
+    "Purple Swamp Hen",
+    "Purple swamp hen by Toby Hudson (CC-by-SA)"
   );
 });
 
-document.getElementById("cockatoo-button").addEventListener("click", function () {
+document.getElementById("stilt-button").addEventListener("click", function () {
   showBird(
-    "images/cockatoo.jpg",
-    "Cockatoo",
-    "The sulphur-crested cockatoo has white feathers and a bright yellow crest."
+    "http://www.outgrabe.net/bird02.jpg",
+    "White-headed Stilt",
+    "White-headed Stilt by JJ Harrison (CC-by-SA)"
   );
 });
 
-document.getElementById("lorikeet-button").addEventListener("click", function () {
+document.getElementById("thornbill-button").addEventListener("click", function () {
   showBird(
-    "images/lorikeet.jpg",
-    "Rainbow Lorikeet",
-    "The rainbow lorikeet is a colourful parrot that feeds mainly on nectar and fruit."
+    "http://www.outgrabe.net/bird03.jpg",
+    "Inland Thornbill",
+    "Inland Thornbill by Peter Jacobs (CC-by-SA)"
   );
 });
 
-document.getElementById("emu-button").addEventListener("click", function () {
+document.getElementById("robin-button").addEventListener("click", function () {
   showBird(
-    "images/emu.jpg",
-    "Emu",
-    "The emu is a large flightless bird native to Australia."
+    "http://www.outgrabe.net/bird04.jpg",
+    "Rose Robin",
+    "Rose Robin by JJ Harrison (CC-by-SA)"
   );
 });
 // Switches between the light and dark colour themes
-document.getElementById("theme-toggle").addEventListener("click", function () {
-  document.body.classList.toggle("dark-theme");
-});
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTheme);
+}
+
+document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
 </script>
 </body>
 </html>
